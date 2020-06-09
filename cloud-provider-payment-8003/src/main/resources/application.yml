@@ -1,0 +1,9 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: cloud-provider-payment
+  cloud:
+    zookeeper:
+      connect-string: hdfs-host1:2181,hdfs-host2:2181,hdfs-host3:2181

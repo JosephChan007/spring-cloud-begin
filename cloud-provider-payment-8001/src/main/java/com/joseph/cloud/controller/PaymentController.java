@@ -48,7 +48,7 @@ public class PaymentController {
 
         services.stream().forEach(s -> {
             List<ServiceInstance> instances = discoveryClient.getInstances(s);
-            instances.forEach(ins -> log.info("^^^^ Service Instance[{}]: {} {} {} {}", s, ins.getHost(), ins.getPort(), ins.getUri(), ins.getServiceId()));
+            instances.forEach(ins -> log.info("^^^^ Service Instance[{}]: {} {} {} {}", ins.getServiceId(), ins.getHost(), ins.getPort(), ins.getUri(), ins.getInstanceId()));
         });
 
         return this.discoveryClient;
