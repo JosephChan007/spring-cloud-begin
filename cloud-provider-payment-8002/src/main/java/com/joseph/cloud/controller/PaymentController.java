@@ -35,4 +35,9 @@ public class PaymentController {
         return null != p ? Result.response(Result.CODE_OK, Result.MSG_OK + ": " + serverPort, p) : Result.failed();
     }
 
+    @GetMapping("/loadBalance")
+    public Result<String> loadBalance() {
+        return Result.success(serverPort);
+    }
+
 }

@@ -2,9 +2,13 @@ package com.joseph.cloud.controller;
 
 import com.joseph.cloud.common.Result;
 import com.joseph.cloud.entities.Payment;
+import com.joseph.cloud.lb.MyLoadBalance;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import java.net.URI;
+import java.util.List;
 
 
 @RestController
@@ -25,6 +31,16 @@ public class OrderController {
 
     @Resource
     private RestTemplate template;
+
+    @Resource
+    private RestTemplate restTemplate;
+
+    @Resource
+    private DiscoveryClient discoveryClient;
+
+    @Resource
+    private MyLoadBalance myLoadBalance;
+
 
     @GetMapping("/create")
     public Result create(Payment payment) {
@@ -40,10 +56,18 @@ public class OrderController {
         return template.getForObject(url, Result.class);
     }
 
+    @GetMapping("/loadBalance")
+    public Result<String> loadBalance() {
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        if(CollectionUtils.isEmpty(instances)) return null;
 
-    @Bean
-    @LoadBalanced
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
+        ServiceInstance instance = myLoadBalance.getServiceInstance(instances);
+        URI uri = instance.getUri();
+        String url = uri + "/payment/loadBalance";
+        log.info("****** 服务接口地址: {}", url);
+
+        return restTemplate.getForObject(url, Result.class);
     }
+
+
 }
