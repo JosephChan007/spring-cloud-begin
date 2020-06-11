@@ -52,4 +52,10 @@ public class OrderHystrixController {
     }
 
 
+    @GetMapping("/circuit/{id}")
+    public Result<String> circuit(@PathVariable("id") Integer id) {
+        return paymentHystrixService.circuit(id);
+    }
+
+
 }

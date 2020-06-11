@@ -21,4 +21,10 @@ public class PaymentFallbackService implements PaymentHystrixService {
         return Result.success(msg);
     }
 
+    @Override
+    public Result<String> circuit(Integer id) {
+        String msg = "*********** PaymentFallbackService_circuit_handler....id: " + id;
+        return Result.success(msg);
+    }
+
 }
