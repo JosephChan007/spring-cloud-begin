@@ -5,6 +5,10 @@ spring:
   application:
     name: cloud-payment-hystrix-service
 
+feign:
+  hystrix:
+    enabled: true
+
 eureka:
   instance:
     instance-id: PaymentHystrixService8004
