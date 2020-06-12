@@ -25,11 +25,12 @@
     <module>cloud-provider-payment-hystrix-8004</module>
     <module>cloud-consumer-order-hystrix-80</module>
       <module>cloud-monitor-hystrix-dashboard-9001</module>
+      <module>cloud-gateway-gateway-10000</module>
   </modules>
 
   <properties>
     <spring.boot.version>2.2.1.RELEASE</spring.boot.version>
-    <spring.cloud.version>Hoxton.SR5</spring.cloud.version>
+    <spring.cloud.version>Hoxton.RELEASE</spring.cloud.version>
     <spring.cloud.alibaba.version>2.1.0.RELEASE</spring.cloud.alibaba.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
