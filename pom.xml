@@ -24,8 +24,11 @@
     <module>cloud-consumer-order-feign-80</module>
     <module>cloud-provider-payment-hystrix-8004</module>
     <module>cloud-consumer-order-hystrix-80</module>
-      <module>cloud-monitor-hystrix-dashboard-9001</module>
-      <module>cloud-gateway-gateway-10000</module>
+    <module>cloud-monitor-hystrix-dashboard-9001</module>
+    <module>cloud-gateway-gateway-10000</module>
+    <module>cloud-configuration-center-11000</module>
+    <module>cloud-configuration-client-11001</module>
+    <module>cloud-configuration-client-11002</module>
   </modules>
 
   <properties>
