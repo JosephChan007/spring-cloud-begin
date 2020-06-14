@@ -1,0 +1,15 @@
+server:
+  port: 81
+
+spring:
+  application:
+    name: nacos-order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: hdfs-host2:8848,hdfs-host3:8848,hdfs-host4:8848
+
+logging:
+  level:
+    # 需要打印日志的Feign接口及日志级别
+    com.joseph.cloud.service.PaymengFeignService: debug

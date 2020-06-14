@@ -40,4 +40,10 @@ public class PaymentController {
         return Result.success(serverPort);
     }
 
+    @GetMapping("/zipkin")
+    public Result<String> zipkin() {
+        String msg = "hi, i am payment zipkin server fallback, welcome to joseph world, haha...";
+        return Result.success(msg);
+    }
+
 }

@@ -1,0 +1,32 @@
+server:
+  port: 8006
+
+spring:
+  application:
+    name: nacos-payment-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: hdfs-host2:8848,hdfs-host3:8848,hdfs-host4:8848
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1            # 采样率，介于0~1之间，1表示全部采集
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://hdfs-host4:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.joseph.cloud.entities
+
+# 暴露bus刷新配置的端点，通过kafka刷新所有client端
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

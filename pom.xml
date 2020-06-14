@@ -29,6 +29,10 @@
     <module>cloud-configuration-center-11000</module>
     <module>cloud-configuration-client-11001</module>
     <module>cloud-configuration-client-11002</module>
+    <module>cloudalibaba-provider-payment-8005</module>
+    <module>cloudalibaba-provider-payment-8006</module>
+      <module>cloudalibaba-consumer-order-81</module>
+      <module>cloud-configuration-nacos-client-11003</module>
   </modules>
 
   <properties>
