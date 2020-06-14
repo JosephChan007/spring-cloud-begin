@@ -1,0 +1,21 @@
+server:
+  port: 9100
+
+spring:
+  application:
+    name: sentinel-monitor-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: hdfs-host2:8848,hdfs-host3:8848,hdfs-host4:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
