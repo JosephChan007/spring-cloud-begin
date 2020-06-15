@@ -12,7 +12,6 @@ spring:
       transport:
         dashboard: localhost:8080
 
-
 # 暴露监控端点
 management:
   endpoints:

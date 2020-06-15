@@ -12,9 +12,10 @@ spring:
       transport:
         dashboard: localhost:8080
 
-# 暴露bus刷新配置的端点，通过kafka刷新所有client端
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: "*"
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+

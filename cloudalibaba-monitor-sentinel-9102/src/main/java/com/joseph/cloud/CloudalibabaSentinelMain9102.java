@@ -7,10 +7,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class CloudalibabaSentinelMain9100 {
+public class CloudalibabaSentinelMain9102 {
 
     public static void main(String[] args) {
-        SpringApplication.run(CloudalibabaSentinelMain9100.class, args);
+        SpringApplication.run(CloudalibabaSentinelMain9102.class, args);
     }
 
 }
