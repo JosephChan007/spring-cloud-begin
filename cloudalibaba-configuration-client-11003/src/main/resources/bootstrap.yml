@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: nacos-config-client
+    name: cloudalibaba-config-client
   cloud:
     nacos:
       discovery:
@@ -13,6 +13,6 @@ spring:
       config:
         server-addr: hdfs-host1:8000
         file-extension: yaml    # 配置文件后缀，配置文件命名规则：${spring.application.name}-${spring.profiles.active}.${file-extension}
-        group: DEFAULT_GROUP    # 分组标识，默认组名：DEFAULT_GROUP，可以自定义其他组名
+#        group: DEFAULT_GROUP    # 分组标识，默认组名：DEFAULT_GROUP，可以自定义其他组名
 #        namespace: a9a8c0f3-2976-485f-96b4-5cbaa5e79021   # dev命名空间，省略时默认public命名空间
 

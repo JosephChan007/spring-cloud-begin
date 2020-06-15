@@ -31,9 +31,10 @@
     <module>cloud-configuration-client-11002</module>
     <module>cloudalibaba-provider-payment-8005</module>
     <module>cloudalibaba-provider-payment-8006</module>
-      <module>cloudalibaba-consumer-order-81</module>
-      <module>cloud-configuration-nacos-client-11003</module>
-      <module>cloudalibaba-monitor-sentinel-9100</module>
+    <module>cloudalibaba-consumer-order-81</module>
+    <module>cloudalibaba-configuration-client-11003</module>
+    <module>cloudalibaba-monitor-sentinel-9102</module>
+    <module>cloudalibaba-monitor-sentinel-9101</module>
   </modules>
 
   <properties>

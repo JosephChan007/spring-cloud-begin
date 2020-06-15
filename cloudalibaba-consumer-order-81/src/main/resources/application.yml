@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: nacos-order-service
+    name: cloudalibaba-order-service
   cloud:
     nacos:
       discovery:

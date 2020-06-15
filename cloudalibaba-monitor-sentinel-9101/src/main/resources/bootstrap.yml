@@ -1,0 +1,20 @@
+server:
+  port: 9101
+
+spring:
+  application:
+    name: cloudalibaba-sentinel-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: hdfs-host1:8000
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+
+# 暴露bus刷新配置的端点，通过kafka刷新所有client端
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"

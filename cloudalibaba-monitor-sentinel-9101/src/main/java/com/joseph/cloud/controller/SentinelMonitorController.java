@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/monitor")
-public class MonitorController {
+public class SentinelMonitorController {
 
     @GetMapping("/testA")
     public String testA() {

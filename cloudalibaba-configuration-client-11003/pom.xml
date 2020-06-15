@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-configuration-nacos-client-11003</artifactId>
+    <artifactId>cloudalibaba-configuration-client-11003</artifactId>
 
     <dependencies>
 

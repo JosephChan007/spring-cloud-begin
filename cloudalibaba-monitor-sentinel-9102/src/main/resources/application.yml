@@ -1,9 +1,9 @@
 server:
-  port: 9100
+  port: 9102
 
 spring:
   application:
-    name: sentinel-monitor-service
+    name: cloudalibaba-sentinel-service
   cloud:
     nacos:
       discovery:

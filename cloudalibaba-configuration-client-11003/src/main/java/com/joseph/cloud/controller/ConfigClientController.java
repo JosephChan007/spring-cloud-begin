@@ -12,10 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/nacos/config/client")
 public class ConfigClientController {
 
-    /**
-     * 注意：配置动态更新，需要作一次刷新请求：
-     *      curl -X POST "http://localhost:11001/actuator/refresh"
-     */
     @Value("${config.info}")
     private String configInfo;
 
