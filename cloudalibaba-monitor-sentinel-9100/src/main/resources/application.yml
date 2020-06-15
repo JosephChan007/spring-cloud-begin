@@ -7,7 +7,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: hdfs-host2:8848,hdfs-host3:8848,hdfs-host4:8848
+        server-addr: hdfs-host1:8000
     sentinel:
       transport:
         dashboard: localhost:8080
