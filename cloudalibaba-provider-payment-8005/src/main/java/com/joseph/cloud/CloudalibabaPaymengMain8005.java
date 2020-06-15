@@ -6,10 +6,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class SentinelMonitorMain9101 {
+public class CloudalibabaPaymengMain8005 {
 
     public static void main(String[] args) {
-        SpringApplication.run(SentinelMonitorMain9101.class, args);
+        SpringApplication.run(CloudalibabaPaymengMain8005.class, args);
     }
-
 }
