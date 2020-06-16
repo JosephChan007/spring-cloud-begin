@@ -11,6 +11,14 @@ spring:
     sentinel:
       transport:
         dashboard: localhost:8080
+      datasource:
+        ds1:
+          nacos:
+            server-addr: hdfs-host1:8000
+            dataId: cloudalibaba-sentinel-service
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
 
 # 暴露监控端点
 management:

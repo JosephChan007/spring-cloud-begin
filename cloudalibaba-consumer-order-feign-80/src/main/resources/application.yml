@@ -1,0 +1,17 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloudalibaba-order-feign-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: hdfs-host1:8000
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+
+feign:
+  sentinel:
+    enabled: true
