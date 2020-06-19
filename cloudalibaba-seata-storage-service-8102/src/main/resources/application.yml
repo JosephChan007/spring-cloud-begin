@@ -1,0 +1,53 @@
+server:
+  port: 8102
+
+spring:
+  application:
+    name: cloudalibaba-seata-storage-service
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: my_test_tx_group     # 自定义事务组名称，跟seata-server的file.conf配置中保持一致
+    nacos:
+      discovery:
+        server-addr: hdfs-host1:8000
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://hdfs-host4:3306/seata_storage?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+
+#seata:
+#  enabled: true
+#  application-id: seata-storage-service         # 可自定义且是唯一的
+#  tx-service-group: seata_test_tx_group         # 可自定义要和seata-server保持一致
+#  config:
+#    type: nacos
+#    nacos:
+#      namespace: d274b64e-7ebf-434a-ba3c-d9a4423874df
+#      serverAddr: hdfs-host1:8000
+#      group: SEATA_CONFIG_GROUP
+#  registry:
+#    type: nacos
+#    nacos:
+#      application: seata-server
+#      server-addr: 192.168.101.500:8848
+#      namespace: d274b64e-7ebf-434a-ba3c-d9a4423874df
+#  client:
+#    support:
+#      spring:
+#        datasource-autoproxy: false
+
+feign:
+  hystrix:
+    enabled: false
+
+logging:
+  level:
+    io:
+      seata: info
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+

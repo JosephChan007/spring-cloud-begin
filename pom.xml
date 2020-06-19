@@ -36,6 +36,9 @@
     <module>cloudalibaba-monitor-sentinel-9102</module>
     <module>cloudalibaba-monitor-sentinel-9101</module>
       <module>cloudalibaba-consumer-order-feign-80</module>
+      <module>cloudalibaba-seata-order-service-8101</module>
+      <module>cloudalibaba-seata-storage-service-8102</module>
+      <module>cloudalibaba-seata-account-service-8103</module>
   </modules>
 
   <properties>
