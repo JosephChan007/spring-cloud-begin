@@ -1,44 +1,6 @@
 server:
   port: 8102
 
-spring:
-  application:
-    name: cloudalibaba-seata-storage-service
-  cloud:
-    alibaba:
-      seata:
-        tx-service-group: my_test_tx_group     # 自定义事务组名称，跟seata-server的file.conf配置中保持一致
-    nacos:
-      discovery:
-        server-addr: hdfs-host1:8000
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://hdfs-host4:3306/seata_storage?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-    username: root
-    password: 123456
-
-#seata:
-#  enabled: true
-#  application-id: seata-storage-service         # 可自定义且是唯一的
-#  tx-service-group: seata_test_tx_group         # 可自定义要和seata-server保持一致
-#  config:
-#    type: nacos
-#    nacos:
-#      namespace: d274b64e-7ebf-434a-ba3c-d9a4423874df
-#      serverAddr: hdfs-host1:8000
-#      group: SEATA_CONFIG_GROUP
-#  registry:
-#    type: nacos
-#    nacos:
-#      application: seata-server
-#      server-addr: 192.168.101.500:8848
-#      namespace: d274b64e-7ebf-434a-ba3c-d9a4423874df
-#  client:
-#    support:
-#      spring:
-#        datasource-autoproxy: false
-
 feign:
   hystrix:
     enabled: false
@@ -51,3 +13,63 @@ logging:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
 
+seata:
+  enabled: true
+  application-id: cloudalibaba-seata-storage-service
+  tx-service-group: joseph_tx_group
+  client:
+    rm-async-commit-buffer-limit: 1000
+    rm-report-retry-count: 5
+    rm-table-meta-check-enable: false
+    rm-report-success-enable: true
+    rm:
+      lock:
+        lock-retry-interval: 10
+        lock-retry-times: 30
+        lock-retry-policy-branch-rollback-on-conflict: true
+    tm-commit-retry-count: 5
+    tm-rollback-retry-count: 5
+    support:
+      spring:
+        datasource-autoproxy: true
+    undo:
+      undo-data-validation: true
+      undo-log-serialization: jackson
+      undo-log-table: undo_log
+    client:
+      log:
+        exceptionRate: 100
+  service:
+    vgroup-mapping: joseph_tx_group
+    grouplist: 127.0.0.1:8091
+    enable-degrade: false
+    disable-global-transaction: false
+  transport:
+    shutdown:
+      wait: 3
+    thread-factory:
+      boss-thread-prefix: NettyBoss
+      worker-thread-prefix: NettyServerNIOWorker
+      server-executor-thread-prefix: NettyServerBizHandler
+      share-boss-worker: false
+      client-selector-thread-prefix: NettyClientSelector
+      client-selector-thread-size: 1
+      client-worker-thread-prefix: NettyClientWorkerThread
+    type: TCP
+    server: NIO
+    heartbeat: true
+    serialization: seata
+    compressor: none
+    enable-client-batch-send-request: true
+  config:
+    type: nacos
+    nacos:
+      namespace: d274b64e-7ebf-434a-ba3c-d9a4423874df
+      serverAddr: hdfs-host1:8000
+      group: SEATA_CONFIG_GROUP
+  registry:
+    type: nacos
+    nacos:
+      cluster: default
+      server-addr: hdfs-host1:8000
+      namespace: d274b64e-7ebf-434a-ba3c-d9a4423874df
