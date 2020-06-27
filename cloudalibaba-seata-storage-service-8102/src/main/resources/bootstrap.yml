@@ -2,9 +2,6 @@ spring:
   application:
     name: cloudalibaba-seata-storage-service
   cloud:
-    alibaba:
-      seata:
-        tx-service-group: joseph_tx_group
     nacos:
       discovery:
         server-addr: hdfs-host1:8000
