@@ -41,7 +41,7 @@ seata:
         exceptionRate: 100
   service:
     vgroup-mapping: joseph_tx_group
-    grouplist: 127.0.0.1:8091
+    grouplist: hdfs-host2:8091,hdfs-host3:8091
     enable-degrade: false
     disable-global-transaction: false
   transport:
