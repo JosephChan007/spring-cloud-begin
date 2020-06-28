@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: cloudalibaba-seata-order-client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: hdfs-host1:8000

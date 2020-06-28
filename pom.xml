@@ -39,6 +39,7 @@
       <module>cloudalibaba-seata-order-service-8101</module>
       <module>cloudalibaba-seata-storage-service-8102</module>
       <module>cloudalibaba-seata-account-service-8103</module>
+      <module>cloudalibaba-seata-order-client-80</module>
   </modules>
 
   <properties>
