@@ -19,13 +19,13 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Result<Boolean> create(Order order) {
         orderDao.create(order);
-        return Result.success(Boolean.TRUE);
+        return Result.success(order.getId() > 0);
     }
 
     @Override
     public Result<Boolean> update(Long userId) {
-        orderDao.update(userId, 0);
-        return Result.success(Boolean.TRUE);
+        int c = orderDao.update(userId, 0);
+        return Result.success(c > 0);
     }
 
 

@@ -13,7 +13,7 @@
     <sql id="Table_Name">t_storage</sql>
 
     <update id="update">
-        update <include refid="Table_Name" /> set status=used+#{count}, residue=residue-#{count} where product_id=#{productId};
+        update <include refid="Table_Name" /> set used=used+#{count}, residue=residue-#{count} where product_id=#{productId};
     </update>
     
 </mapper>

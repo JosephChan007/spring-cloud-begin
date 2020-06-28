@@ -13,7 +13,7 @@
     <sql id="Table_Name">t_account</sql>
 
     <update id="update">
-        update <include refid="Table_Name" /> set status=used+#{money}, residue=residue-#{money} where user_id=#{userId};
+        update <include refid="Table_Name" /> set used=used+#{money}, residue=residue-#{money} where user_id=#{userId};
     </update>
     
 </mapper>

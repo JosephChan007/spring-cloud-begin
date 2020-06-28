@@ -19,9 +19,6 @@ public class SeataOrderController {
     private OrderService orderService;
 
     @GetMapping("/create")
-    public Result<Boolean> create(Order order) {
-        return orderService.create(order);
-    }
     public Result<Boolean> create(@RequestParam("userId") Long userId,
                                   @RequestParam("productId") Long productId,
                                   @RequestParam("count") Integer count,
