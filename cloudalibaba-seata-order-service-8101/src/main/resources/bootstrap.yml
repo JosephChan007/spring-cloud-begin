@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: cloudalibaba-seata-order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: hdfs-host1:8000
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://hdfs-host4:3306/seata_storage?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456

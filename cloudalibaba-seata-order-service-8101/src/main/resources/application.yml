@@ -1,23 +1,6 @@
 server:
   port: 8101
 
-spring:
-  application:
-    name: cloudalibaba-seata-order-service
-  cloud:
-    alibaba:
-      seata:
-        tx-service-group: my_test_tx_group     # 自定义事务组名称，跟seata-server的file.conf配置中保持一致
-    nacos:
-      discovery:
-        server-addr: hdfs-host1:8000
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://hdfs-host4:3306/seata_order?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-    username: root
-    password: 123456
-
 feign:
   hystrix:
     enabled: false
@@ -29,5 +12,71 @@ logging:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+
+seata:
+  enabled: true
+  application-id: seata-order-service
+  tx-service-group: joseph_tx_group
+  enable-auto-data-source-proxy: true
+  use-jdk-proxy: false
+  excludes-for-auto-proxying: firstClassNameForExclude,secondClassNameForExclude
+  client:
+    rm:
+      async-commit-buffer-limit: 1000
+      report-retry-count: 5
+      table-meta-check-enable: false
+      report-success-enable: false
+      saga-branch-register-enable: false
+      lock:
+        retry-interval: 10
+        retry-times: 30
+        retry-policy-branch-rollback-on-conflict: true
+    tm:
+      commit-retry-count: 5
+      rollback-retry-count: 5
+    undo:
+      data-validation: true
+      log-serialization: jackson
+      log-table: undo_log
+    log:
+      exceptionRate: 100
+  service:
+    vgroup-mapping:
+      joseph_tx_group: default
+    grouplist:
+      default: hdfs-host2:8091
+    enable-degrade: false
+    disable-global-transaction: false
+  transport:
+    shutdown:
+      wait: 3
+    thread-factory:
+      boss-thread-prefix: NettyBoss
+      worker-thread-prefix: NettyServerNIOWorker
+      server-executor-thread-prefix: NettyServerBizHandler
+      share-boss-worker: false
+      client-selector-thread-prefix: NettyClientSelector
+      client-selector-thread-size: 1
+      client-worker-thread-prefix: NettyClientWorkerThread
+      worker-thread-size: 5
+      boss-thread-size: 1
+    type: TCP
+    server: NIO
+    heartbeat: true
+    serialization: seata
+    compressor: none
+    enable-client-batch-send-request: true
+  config:
+    type: nacos
+    nacos:
+      namespace: d274b64e-7ebf-434a-ba3c-d9a4423874df
+      serverAddr: hdfs-host1:8000
+      group: SEATA_CONFIG_GROUP
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: hdfs-host1:8000
+      namespace: d274b64e-7ebf-434a-ba3c-d9a4423874df
 
 
