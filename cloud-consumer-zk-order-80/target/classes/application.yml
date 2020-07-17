@@ -1,9 +1,0 @@
-server:
-  port: 80
-
-spring:
-  application:
-    name: cloud-consumer-order
-  cloud:
-    zookeeper:
-      connect-string: hdfs-host1:2181,hdfs-host2:2181,hdfs-host3:2181

@@ -59,7 +59,9 @@ public class OrderController {
     @GetMapping("/loadBalance")
     public Result<String> loadBalance() {
         List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
-        if(CollectionUtils.isEmpty(instances)) return null;
+        if(CollectionUtils.isEmpty(instances)) {
+            return null;
+        }
 
         ServiceInstance instance = myLoadBalance.getServiceInstance(instances);
         URI uri = instance.getUri();
